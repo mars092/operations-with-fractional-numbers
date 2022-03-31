@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.operationsWithFractionalNumbers = void 0;
 // Округление к ближайшему
 // decimalAdjust('round', 55.55, -1);   // 55.6
 // decimalAdjust('round', 55.549, -1);  // 55.5
@@ -118,4 +117,4 @@ function operationsWithFractionalNumbers(operator, exp, type, ...args) {
             return summationFractionsWithRounding(factor, exp, type, ...args);
     }
 }
-exports.operationsWithFractionalNumbers = operationsWithFractionalNumbers;
+exports.default = operationsWithFractionalNumbers;

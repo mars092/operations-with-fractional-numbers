@@ -98,7 +98,7 @@ function summationFractionsWithRounding(factor: number, exp: number, type: TypeM
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
-export function operationsWithFractionalNumbers(operator: '*' | '-' | '+', exp: number, type: TypeMath, ...args: number[]): number {
+export default function operationsWithFractionalNumbers(operator: '*' | '-' | '+', exp: number, type: TypeMath, ...args: number[]): number {
   if (!args.length) {
     return NaN;
   }
