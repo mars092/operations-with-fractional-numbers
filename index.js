@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.operationsWithFractionalNumbers = exports.decimalAdjust = void 0;
+exports.operationsWithFractionalNumbers = void 0;
 // Округление к ближайшему
 // decimalAdjust('round', 55.55, -1);   // 55.6
 // decimalAdjust('round', 55.549, -1);  // 55.5
@@ -45,7 +45,6 @@ function decimalAdjust(type, value, exp) {
     const reverseShift = value.toString().split('e');
     return +(reverseShift[0] + 'e' + (reverseShift[1] ? (+reverseShift[1] + exp) : exp));
 }
-exports.decimalAdjust = decimalAdjust;
 function numberSimbolsAfterComma(numb) {
     return numb.toString().includes('.') ? numb.toString().split('.').pop().length : 0;
 }

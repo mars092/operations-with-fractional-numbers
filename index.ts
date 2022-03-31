@@ -29,7 +29,7 @@ type TypeMath = 'round' | 'floor' | 'ceil';
  * @param {Integer} exp   Показатель степени (десятичный логарифм основания корректировки).
  * @returns {Number} Скорректированное значение.
  */
-export function decimalAdjust(type: TypeMath, value: number, exp?: number): number {
+function decimalAdjust(type: TypeMath, value: number, exp?: number): number {
   // Если степень не определена, либо равна нулю...
   if (typeof exp === 'undefined' || +exp === 0) {
     return Math[type](value);
