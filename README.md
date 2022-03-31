@@ -1,1 +1,1 @@
-# operations-with-fractional-numbers
+# Operations with fractional numbers

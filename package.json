@@ -1,0 +1,24 @@
+{
+  "name": "operations-with-fractional-numbers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -p ./tsconfig.json --watch",
+    "build": "tsc -p ./tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mars092/operations-with-fractional-numbers.git"
+  },
+  "keywords": [],
+  "author": "Dmytro Zadorozhnii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mars092/operations-with-fractional-numbers/issues"
+  },
+  "homepage": "https://github.com/mars092/operations-with-fractional-numbers#readme",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
