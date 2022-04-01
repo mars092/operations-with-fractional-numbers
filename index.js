@@ -56,7 +56,7 @@ function calcResult(sum1, sum2) {
         let nuls = '';
         for (let i = 0; i < sum2.toString().split('.')[1].length; i++) {
             if (sum2.toString().split('.')[1][i] !== '0') {
-                if (sum2.toString().split('.')[1][i] === '9' && sum2.toString().split('.')[1][i - 1] === '0' && nuls.length) {
+                if (nuls.length && sum2.toString().split('.')[1][i] === '9' && sum2.toString().split('.')[1][i - 1] === '0') {
                     nuls = nuls.slice(1);
                 }
                 break;
