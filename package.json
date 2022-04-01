@@ -1,6 +1,6 @@
 {
   "name": "operations-with-fractional-numbers",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "url": "https://github.com/mars092/operations-with-fractional-numbers/issues"
   },
   "homepage": "https://github.com/mars092/operations-with-fractional-numbers#readme",
-  "devDependencies": {
+  "dependencies": {
     "typescript": "^4.6.3"
   }
 }
