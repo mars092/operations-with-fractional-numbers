@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// Округление к ближайшему
+// Rounding to nearest
 // decimalAdjust('round', 55.55, -1);   // 55.6
 // decimalAdjust('round', 55.549, -1);  // 55.5
 // decimalAdjust('round', 55, 1);       // 60
@@ -9,38 +9,38 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // decimalAdjust('round', -55.551, -1); // -55.6
 // decimalAdjust('round', -55, 1);      // -50
 // decimalAdjust('round', -55.1, 1);    // -60
-// decimalAdjust('round', 1.005, -2);   // 1.01 -- сравните этот результат с результатом Math.round(1.005*100)/100
-// Округление вниз
+// decimalAdjust('round', 1.005, -2);   // 1.01 -- compare this result with the result Math.round(1.005*100)/100
+// Round down
 // decimalAdjust('floor', 55.59, -1);   // 55.5
 // decimalAdjust('floor', 59, 1);       // 50
 // decimalAdjust('floor', -55.51, -1);  // -55.6
 // decimalAdjust('floor', -51, 1);      // -60
-// Округление вверх
+// Round up
 // decimalAdjust('ceil', 55.51, -1);    // 55.6
 // decimalAdjust('ceil', 51, 1);        // 60
 // decimalAdjust('ceil', -55.59, -1);   // -55.5
 // decimalAdjust('ceil', -59, 1);       // -50
 /**
- * Корректировка округления десятичных дробей.
+ * Decimal rounding correction.
  *
- * @param {String}  type  Тип корректировки.
- * @param {Number}  value Число.
- * @param {Integer} exp   Показатель степени (десятичный логарифм основания корректировки).
- * @returns {Number} Скорректированное значение.
+ * @param {String} type Correction type.
+ * @param {Number} value Number.
+ * @param {Integer} exp Exponent (decimal logarithm of the base of the adjustment).
+ * @returns {Number} Adjusted value.
  */
 function decimalAdjust(type, value, exp) {
-    // Если степень не определена, либо равна нулю...
+    // If the degree is not defined, or is equal to zero...
     if (typeof exp === 'undefined' || +exp === 0) {
         return Math[type](value);
     }
-    // Если значение не является числом, либо степень не является целым числом...
+    // If the value is not a number, or the degree is not an integer...
     if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
         return NaN;
     }
-    // Сдвиг разрядов
+    // Bit shift
     const shift = value.toString().split('e');
     value = Math[type](+(shift[0] + 'e' + (shift[1] ? (+shift[1] - exp) : -exp)));
-    // Обратный сдвиг
+    // Reverse shift
     const reverseShift = value.toString().split('e');
     return +(reverseShift[0] + 'e' + (reverseShift[1] ? (+reverseShift[1] + exp) : exp));
 }
@@ -96,6 +96,15 @@ function summationFractionsWithRounding(factor, exp, type, ...args) {
     });
     return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
+/**
+ * Operations with fractional numbers.
+ *
+ * @param {String} operator '*' | '-' | '+'.
+ * @param {Integer} exp Exponent (decimal logarithm of the base of the adjustment).
+ * @param {String} type 'round' | 'floor' | 'ceil'.
+ * @param {Number[]} args Array of numbers.
+ * @returns {Number} Array of numbers.
+ */
 function operationsWithFractionalNumbers(operator, exp, type, ...args) {
     if (!args.length) {
         return NaN;
