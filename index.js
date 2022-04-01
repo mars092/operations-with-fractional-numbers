@@ -55,9 +55,12 @@ function calcResult(sum1, sum2) {
     if (numberBeforeDecimalPoint === '0' || numberBeforeDecimalPoint === '-0') {
         let nuls = '';
         for (let i = 0; i < sum2.toString().split('.')[1].length; i++) {
-            const char = sum2.toString().split('.')[1][i];
-            if (+char !== 0)
+            if (sum2.toString().split('.')[1][i] !== '0') {
+                if (sum2.toString().split('.')[1][i] === '9' && sum2.toString().split('.')[1][i - 1] === '0' && nuls.length) {
+                    nuls = nuls.slice(1);
+                }
                 break;
+            }
             nuls = `${nuls}0`;
         }
         return +`${sum2.toString().split('.')[0]}.${nuls}${Math.abs(sum1)}`;
