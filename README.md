@@ -3,7 +3,7 @@
 Function `operationsWithFractionalNumbers` for JavaScript.
 
 ```
-operator - '*' | '-' | '+';
+operator - '*' | '-' | '+' | '/';
 exp - number, Exponent (decimal logarithm of the base of the adjustment);
 type - 'round' | 'floor' | 'ceil';
 ...args - number[];
@@ -30,4 +30,7 @@ console.log(operationsWithFractionalNumbers('+', -2, 'floor', 0.09, 0.01));
 
 console.log(operationsWithFractionalNumbers('*', -2, 'floor', 0.2, 3));
 // 0.6
+
+console.log(operationsWithFractionalNumbers('/', -2, 'floor', 3.4, 3));
+// 1.13
 ```

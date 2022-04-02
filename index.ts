@@ -73,32 +73,47 @@ function calcResult(sum1: number, sum2: number): number {
 }
 
 function subtractionFractionsWithRounding(factor: number, exp: number, type: TypeMath, ...args: number[]): number {
-  let sum1 = decimalAdjust('round', args[0] * factor);
+  let sum1 = args[0] * factor;
   let sum2 = args[0];
   args.slice(1).forEach(numb => {
-    sum1 -= decimalAdjust('round', numb * factor);
+    sum1 -= numb * factor;
     sum2 -= numb;
   });
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
 function multiplicationFractionsWithRounding(factor: number, exp: number, type: TypeMath, ...args: number[]): number {
-  let sum1 = decimalAdjust('round', args[0] * factor);
+  let sum1 = args[0] * factor;
   let sum2 = args[0];
   args.slice(1).forEach(numb => {
-    sum1 *= decimalAdjust('round', numb * factor);
+    sum1 *= numb * factor;
     sum2 *= numb;
   });
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
 function summationFractionsWithRounding(factor: number, exp: number, type: TypeMath, ...args: number[]): number {
-  let sum1 = decimalAdjust('round', args[0] * factor);
+  let sum1 = args[0] * factor;
   let sum2 = args[0];
   args.slice(1).forEach(numb => {
-    sum1 += decimalAdjust('round', numb * factor);
+    sum1 += numb * factor;
     sum2 += numb;
   });
+  return decimalAdjust(type, calcResult(sum1, sum2), exp);
+}
+
+function divisionOfFractionsWithRounding(factor: number, exp: number, type: TypeMath, ...args: number[]): number {
+  let sum1 = args[0] * factor;
+  let sum2 = args[0];
+  args.slice(1).forEach(numb => {
+    sum1 /= numb * factor;
+    sum2 /= numb;
+  });
+  const valueSimbolsAfterComma = numberSimbolsAfterComma(sum1);
+  if (valueSimbolsAfterComma) {
+    sum1 = sum1 * Math.pow(10, valueSimbolsAfterComma);
+  }
+  if (sum1 === Infinity && sum2 === Infinity) return Infinity;
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
@@ -111,7 +126,7 @@ function summationFractionsWithRounding(factor: number, exp: number, type: TypeM
  * @param {Number[]} args Array of numbers.
  * @returns {Number} Array of numbers.
  */
-export default function operationsWithFractionalNumbers(operator: '*' | '-' | '+', exp: number, type: TypeMath, ...args: number[]): number {
+export default function operationsWithFractionalNumbers(operator: '*' | '-' | '+' | '/', exp: number, type: TypeMath, ...args: number[]): number {
   if (!args.length) {
     return NaN;
   }
@@ -136,5 +151,7 @@ export default function operationsWithFractionalNumbers(operator: '*' | '-' | '+
       return subtractionFractionsWithRounding(factor, exp, type, ...args);
     case '+':
       return summationFractionsWithRounding(factor, exp, type, ...args);
+    case '/':
+      return divisionOfFractionsWithRounding(factor, exp, type, ...args);
   }
 }
