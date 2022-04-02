@@ -70,30 +70,45 @@ function calcResult(sum1, sum2) {
     }
 }
 function subtractionFractionsWithRounding(factor, exp, type, ...args) {
-    let sum1 = decimalAdjust('round', args[0] * factor);
+    let sum1 = args[0] * factor;
     let sum2 = args[0];
     args.slice(1).forEach(numb => {
-        sum1 -= decimalAdjust('round', numb * factor);
+        sum1 -= numb * factor;
         sum2 -= numb;
     });
     return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 function multiplicationFractionsWithRounding(factor, exp, type, ...args) {
-    let sum1 = decimalAdjust('round', args[0] * factor);
+    let sum1 = args[0] * factor;
     let sum2 = args[0];
     args.slice(1).forEach(numb => {
-        sum1 *= decimalAdjust('round', numb * factor);
+        sum1 *= numb * factor;
         sum2 *= numb;
     });
     return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 function summationFractionsWithRounding(factor, exp, type, ...args) {
-    let sum1 = decimalAdjust('round', args[0] * factor);
+    let sum1 = args[0] * factor;
     let sum2 = args[0];
     args.slice(1).forEach(numb => {
-        sum1 += decimalAdjust('round', numb * factor);
+        sum1 += numb * factor;
         sum2 += numb;
     });
+    return decimalAdjust(type, calcResult(sum1, sum2), exp);
+}
+function divisionOfFractionsWithRounding(factor, exp, type, ...args) {
+    let sum1 = args[0] * factor;
+    let sum2 = args[0];
+    args.slice(1).forEach(numb => {
+        sum1 /= numb * factor;
+        sum2 /= numb;
+    });
+    const valueSimbolsAfterComma = numberSimbolsAfterComma(sum1);
+    if (valueSimbolsAfterComma) {
+        sum1 = sum1 * Math.pow(10, valueSimbolsAfterComma);
+    }
+    if (sum1 === Infinity && sum2 === Infinity)
+        return Infinity;
     return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 /**
@@ -127,6 +142,8 @@ function operationsWithFractionalNumbers(operator, exp, type, ...args) {
             return subtractionFractionsWithRounding(factor, exp, type, ...args);
         case '+':
             return summationFractionsWithRounding(factor, exp, type, ...args);
+        case '/':
+            return divisionOfFractionsWithRounding(factor, exp, type, ...args);
     }
 }
 exports.default = operationsWithFractionalNumbers;

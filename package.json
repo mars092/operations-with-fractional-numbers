@@ -1,7 +1,7 @@
 {
   "name": "operations-with-fractional-numbers",
-  "version": "1.1.0",
-  "description": "",
+  "version": "1.2.0",
+  "description": "Function operationsWithFractionalNumbers for JavaScript.",
   "main": "index.js",
   "scripts": {
     "watch": "tsc -p ./tsconfig.json --watch",
@@ -11,7 +11,15 @@
     "type": "git",
     "url": "git+https://github.com/mars092/operations-with-fractional-numbers.git"
   },
-  "keywords": [],
+  "keywords": [
+    "operationsWithFractionalNumbers",
+    "operations-with-fractional-numbers",
+    "Math",
+    "plugin",
+    "react",
+    "vue",
+    "angular"
+  ],
   "author": "Dmytro Zadorozhnii",
   "license": "MIT",
   "bugs": {
