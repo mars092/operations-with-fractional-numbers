@@ -73,40 +73,40 @@ function calcResult(sum1: number, sum2: number): number {
 }
 
 function subtractionFractionsWithRounding(factor: number, exp: number, type: TypeMath, ...args: number[]): number {
-  let sum1 = args[0] * factor;
+  let sum1 = decimalAdjust('round', args[0] * factor);
   let sum2 = args[0];
   args.slice(1).forEach(numb => {
-    sum1 -= numb * factor;
+    sum1 -= decimalAdjust('round', numb * factor);
     sum2 -= numb;
   });
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
 function multiplicationFractionsWithRounding(factor: number, exp: number, type: TypeMath, ...args: number[]): number {
-  let sum1 = args[0] * factor;
+  let sum1 = decimalAdjust('round', args[0] * factor);
   let sum2 = args[0];
   args.slice(1).forEach(numb => {
-    sum1 *= numb * factor;
+    sum1 *= decimalAdjust('round', numb * factor);
     sum2 *= numb;
   });
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
 function summationFractionsWithRounding(factor: number, exp: number, type: TypeMath, ...args: number[]): number {
-  let sum1 = args[0] * factor;
+  let sum1 = decimalAdjust('round', args[0] * factor);
   let sum2 = args[0];
   args.slice(1).forEach(numb => {
-    sum1 += numb * factor;
+    sum1 += decimalAdjust('round', numb * factor);
     sum2 += numb;
   });
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
 function divisionOfFractionsWithRounding(factor: number, exp: number, type: TypeMath, ...args: number[]): number {
-  let sum1 = args[0] * factor;
+  let sum1 = decimalAdjust('round', args[0] * factor);
   let sum2 = args[0];
   args.slice(1).forEach(numb => {
-    sum1 /= numb * factor;
+    sum1 /= decimalAdjust('round', numb * factor);
     sum2 /= numb;
   });
   const valueSimbolsAfterComma = numberSimbolsAfterComma(sum1);
