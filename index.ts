@@ -79,6 +79,7 @@ function subtractionFractionsWithRounding(factor: number, exp: number, type: Typ
     sum1 -= decimalAdjust('round', numb * factor);
     sum2 -= numb;
   });
+  sum2 = decimalAdjust('round', sum2, exp);
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
@@ -89,6 +90,7 @@ function multiplicationFractionsWithRounding(factor: number, exp: number, type: 
     sum1 *= decimalAdjust('round', numb * factor);
     sum2 *= numb;
   });
+  sum2 = decimalAdjust('round', sum2, exp);
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
@@ -99,6 +101,7 @@ function summationFractionsWithRounding(factor: number, exp: number, type: TypeM
     sum1 += decimalAdjust('round', numb * factor);
     sum2 += numb;
   });
+  sum2 = decimalAdjust('round', sum2, exp);
   return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 
