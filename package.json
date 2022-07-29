@@ -1,6 +1,6 @@
 {
   "name": "operations-with-fractional-numbers",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "Function operationsWithFractionalNumbers for JavaScript.",
   "main": "index.js",
   "scripts": {
