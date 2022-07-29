@@ -26,7 +26,7 @@
     "url": "https://github.com/mars092/operations-with-fractional-numbers/issues"
   },
   "homepage": "https://github.com/mars092/operations-with-fractional-numbers#readme",
-  "dependencies": {
-    "typescript": "^4.6.3"
+  "devDependencies": {
+    "typescript": "^4.7.4"
   }
 }

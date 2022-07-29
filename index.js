@@ -76,6 +76,7 @@ function subtractionFractionsWithRounding(factor, exp, type, ...args) {
         sum1 -= decimalAdjust('round', numb * factor);
         sum2 -= numb;
     });
+    sum2 = decimalAdjust('round', sum2, exp);
     return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 function multiplicationFractionsWithRounding(factor, exp, type, ...args) {
@@ -85,6 +86,7 @@ function multiplicationFractionsWithRounding(factor, exp, type, ...args) {
         sum1 *= decimalAdjust('round', numb * factor);
         sum2 *= numb;
     });
+    sum2 = decimalAdjust('round', sum2, exp);
     return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 function summationFractionsWithRounding(factor, exp, type, ...args) {
@@ -94,6 +96,7 @@ function summationFractionsWithRounding(factor, exp, type, ...args) {
         sum1 += decimalAdjust('round', numb * factor);
         sum2 += numb;
     });
+    sum2 = decimalAdjust('round', sum2, exp);
     return decimalAdjust(type, calcResult(sum1, sum2), exp);
 }
 function divisionOfFractionsWithRounding(factor, exp, type, ...args) {
